@@ -1,0 +1,80 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.4.1
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/IndentArray:
+  EnforcedStyle: consistent
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Metrics/CyclomaticComplexity:
+  Enabled: false
+
+Metrics/LineLength:
+  Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/ModuleLength:
+  Enabled: false
+
+Metrics/ParameterLists:
+  CountKeywordArgs: false
+
+Metrics/PerceivedComplexity:
+  Enabled: false
+
+Style/AccessModifierDeclarations:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  EnforcedStyle: always
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: true
+  Exclude:
+    - "**/spec/**/*.rb"
+  IgnoredMethods:
+    # Ruby
+    - require
+    - require_relative
+    - load
+    - include
+    - extend
+    - puts
+    - put
+    - abort
+    - raise
+    - exit
+    # Gemfile
+    - gem
+    - source
+    - ruby
+    - group
+    # Rake
+    - task
+    - namespace
+    - desc
+    - file
+    - directory
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+RSpec/FilePath:
+  Enabled: false

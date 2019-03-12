@@ -12,4 +12,3 @@ steps:
             - path: "ruby-2/"
               config:
                 trigger: "buildkite-test-ruby-1"
-                async: true

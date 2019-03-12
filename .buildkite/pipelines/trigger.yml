@@ -1,15 +1,29 @@
 steps:
-  - label: "Triggering pipelines"
-    env:
-      DEBUG: true
-    plugins:
-      - chronotc/monorepo-diff#v1.1.0:
-          diff: "git diff --name-only HEAD~10"
-          watch:
-            - path: "ruby-1/"
-              config:
-                trigger: "buildkite-test-ruby-1"
-                async: true
-            - path: "ruby-2/"
-              config:
-                trigger: "buildkite-test-ruby-1"
+  - trigger: "buildkite-test-ruby-1"
+    label: "Triggering pipelines"
+    build:
+      commit: 8d62194df84cd165d1b572a40db0c2179af920c6
+      branch: monorepo
+      message: "Check more commits"
+
+  - wait
+
+  - label: "Do other things"
+    command: "sleep 10"
+#    env:
+#      DEBUG: true
+#    plugins:
+#      - chronotc/monorepo-diff#v1.1.0:
+#          diff: "git diff --name-only HEAD~10"
+#          watch:
+#            - path: "ruby-1/"
+#              config:
+#                trigger: "buildkite-test-ruby-1"
+#                build:
+#                  commit: 8d62194df84cd165d1b572a40db0c2179af920c6
+#                  branch: monorepo
+#                  message: "Check more commits"
+#                async: true
+#            - path: "ruby-2/"
+#              config:
+#                trigger: "buildkite-test-ruby-1"

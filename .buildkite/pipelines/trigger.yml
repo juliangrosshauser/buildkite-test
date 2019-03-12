@@ -4,6 +4,7 @@ steps:
       DEBUG: true
     plugins:
       - chronotc/monorepo-diff#v1.1.0:
+          diff: "git diff --name-only HEAD~10"
           watch:
             - path: "ruby-1/"
               config:

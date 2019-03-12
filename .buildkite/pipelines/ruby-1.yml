@@ -1,0 +1,31 @@
+docker: &docker
+  plugins:
+    - docker#v3.0.1:
+        image: "ruby:2.6.1"
+        workdir: /usr/src/app
+
+steps:
+  - label: ":rubocop: Lint"
+    <<: *docker
+    commands:
+      - "gem install bundler --no-document"
+      - "bundle install"
+      - "bundle exec rake rubocop"
+
+  - label: ":rspec: Test"
+    <<: *docker
+    commands:
+      - "gem install bundler --no-document"
+      - "bundle install"
+      - "bundle exec rake spec1"
+    artifact_paths:
+      - "junit1.xml"
+      - "coverage1/**/*"
+
+  - wait: ~
+    continue_on_failure: true
+
+  - label: ":junit: Report"
+    plugins:
+      - junit-annotate#v1.6.0:
+          artifacts: junit1.xml

@@ -1,0 +1,14 @@
+steps:
+  - label: "Triggering pipelines"
+    env:
+      DEBUG: true
+    plugins:
+      - chronotc/monorepo-diff#v1.1.0:
+          watch:
+            - path: "ruby-1/"
+              config:
+                trigger: "buildkite-test-ruby-1"
+            - path: "ruby-2/"
+              config:
+                trigger: "buildkite-test-ruby-2"
+

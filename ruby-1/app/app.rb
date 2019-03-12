@@ -2,6 +2,7 @@
 
 module BuildkiteTest
   class App
+    # subtract method
     def subtract(lhs, rhs)
       lhs - rhs
     end

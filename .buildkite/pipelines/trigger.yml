@@ -8,7 +8,8 @@ steps:
             - path: "ruby-1/"
               config:
                 trigger: "buildkite-test-ruby-1"
+                async: true
             - path: "ruby-2/"
               config:
                 trigger: "buildkite-test-ruby-2"
-
+                async: true

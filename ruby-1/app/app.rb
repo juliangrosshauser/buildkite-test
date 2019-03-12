@@ -7,6 +7,7 @@ module BuildkiteTest
       lhs - rhs
     end
 
+    # divide method
     def divide(lhs, rhs)
       lhs / rhs
     end

@@ -2,6 +2,7 @@
 
 module BuildkiteTest
   class App
+    # add method
     def add(lhs, rhs)
       lhs + rhs
     end

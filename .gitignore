@@ -1,4 +1,4 @@
 /.idea
 /.tool-versions
-/junit.xml
-/coverage/
+/junit*.xml
+/coverage*/

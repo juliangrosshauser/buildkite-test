@@ -9,10 +9,30 @@ RuboCop::RakeTask.new do |t|
   t.options << "--display-cop-names"
 end
 
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.pattern = "ruby/spec/**/*_spec.rb"
+RSpec::Core::RakeTask.new(:spec1) do |t|
+  t.pattern = "ruby-1/spec/**/*_spec.rb"
+  t.ruby_opts = "-I ruby-1/spec"
+  t.rspec_opts = %w[
+    --color
+    --format documentation
+    --order rand
+    --format RspecJunitFormatter --out junit1.xml
+    --require spec_helper
+  ]
 end
 
-CLEAN.include("junit.xml")
+RSpec::Core::RakeTask.new(:spec2) do |t|
+  t.pattern = "ruby-2/spec/**/*_spec.rb"
+  t.ruby_opts = "-I ruby-2/spec"
+  t.rspec_opts = %w[
+    --color
+    --format documentation
+    --order rand
+    --format RspecJunitFormatter --out junit2.xml
+    --require spec_helper
+  ]
+end
 
-task default: %w[rubocop spec]
+CLEAN.include("junit1.xml", "junit2.xml")
+
+task default: %w[rubocop spec1 spec2]
